@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 
 import sys
-sys.path.append('..')
+import os
 import subprocess
 import datetime
 import json
 
+sys.path.append(sys.path[0]+'/..')
 import util.email_sender
 
 
