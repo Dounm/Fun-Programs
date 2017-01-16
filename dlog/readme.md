@@ -1,7 +1,7 @@
-#Dlog
+# Dlog
 A simple C++ streaming log library which has the same usage as ***glog***.
 
-##Usage
+## Usage
 now only support usages below:
 - DLOG(INFO) << "content_need_to_log";
 - DLOG(WARNING) << "content_need_to_log";
@@ -10,5 +10,5 @@ now only support usages below:
 - DCHECK(expresson) << "content_need_to_log";
 - DCHECK_NOT_NULL(ptr) << "content_need_to_log";
 
-##Reference
+## Reference
 - glog source code
