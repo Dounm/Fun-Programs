@@ -45,3 +45,4 @@ for f in para_set:
 
 
 #TODO: support the usage of 'rm /path/*'
+#TODO: fix the bug that the abs path in deny_set can still be delete by relative path
