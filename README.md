@@ -10,3 +10,4 @@ The repository is meant to store some of the fun littlt programs and codes, such
 - **spiders**(python): some python spiders.
 - **ML-kit**(python): store some useful script for training Machine Learning model.
 - **python-projects**(python): some python exercises code learned from a tutorial.
+- **string-matching**(python): implement some string-matching algorithms, such as KMP and Boyer-Moore
