@@ -25,10 +25,15 @@ def cal_next(string):
         elif len(intersect) == 1:
             nexts[i-1] = len(list(intersect)[0])
         else:
-            nexts[i-1] = reduce(lambda a,b: max(len(a),len(b)), intersect)
+            nexts[i-1] = len(reduce(lambda a,b: a if len(a) > len(b) else b, intersect))
     return nexts
 
 def kmp_match(string, substring):
+    if type(string) == str:
+        string = unicode(string)
+    if type(substring) == str:
+        substring = unicode(substring)
+
     nexts = cal_next(substring)
     assert(len(nexts) == len(substring))
 
@@ -50,8 +55,10 @@ def kmp_match(string, substring):
     return -1
 
 def match_count(string, substring):
-    assert(type(string) == unicode)
-    assert(type(substring) == unicode)
+    if type(string) == str:
+        string = unicode(string)
+    if type(substring) == str:
+        substring = unicode(substring)
 
     res = 0
     length = len(substring)
@@ -72,5 +79,5 @@ if __name__ == '__main__':
     b = sys.argv[2]
     a = unicode(a)
     b = unicode(b)
-    # print kmp_match(a, b)
-    print match_count(a, b)
+    print kmp_match(a, b)
+    # print match_count(a, b)
