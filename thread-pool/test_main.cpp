@@ -13,7 +13,7 @@ void foo(int x) {
 }
 
 int main() {
-    thread_pool::ThreadPool pool(2);
+    thread_pool::ThreadPool pool(10);
     pool.start();
     while (1) {
         pool.append(foo);

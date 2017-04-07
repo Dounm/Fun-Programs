@@ -41,22 +41,13 @@ void ThreadPool::work() {
     while (_running) {
         {
             std::unique_lock<std::mutex> guard(_mutex);
-            // TODO: why this won't work
-            // if (_tasks.empty()) {
-            //     _condition_empty.wait(_mutex);
-            // }
-            // task = _tasks.front();
-            // _tasks.pop_front();
             if (_tasks.empty()) {
-                _condition_empty.wait(_mutex);
-            } 
-            if (!_tasks.empty()) {
-                task = _tasks.front();
-                _tasks.pop_front();
-            }else {
-                cnt ++;
-                continue;
+                // _condition_empty.wait(_mutex);   // not mutex but lock
+                // this line still could be compiled, but _condition_empty is waitint on a new lock obj
+                _condition_empty.wait(guard);
             }
+            task = _tasks.front();
+            _tasks.pop_front();
         }           // braces are for unlocking _mutex
         task(cnt);
     }
