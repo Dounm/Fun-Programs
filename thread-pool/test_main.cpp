@@ -4,19 +4,25 @@
 * @date 2017-02-17
 */
 
+#include "thread_pool.h"
 #include <iostream>
 #include <string>
-#include "thread_pool.h"
 
-void foo(int x) {
-    std::cout << x << std::endl;
+void foo() {
+    std::cout << "foo" << std::endl;
+}
+
+void bar(const std::string& str) {
+    std::cout << str << std::endl;
 }
 
 int main() {
     thread_pool::ThreadPool pool(10);
+    pool.append(foo);
+    pool.append(std::bind(&bar, "bar"));
+    pool.append(foo);
     pool.start();
-    while (1) {
-        pool.append(foo);
-    }
+    std::cout << "done" << std::endl;
+    pool.stop();
     return 0;
 }

@@ -24,7 +24,7 @@ namespace thread_pool {
 
 class ThreadPool {
 public:
-    typedef std::function<void(int)> Task;
+    typedef std::function<void()> Task;
     ThreadPool(int thread_num) : _mutex(),
                             _condition_empty(),
                             _tasks(),
